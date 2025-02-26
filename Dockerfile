@@ -54,7 +54,7 @@ ENV TORCH_CUDA_ARCH_LIST="3.5 3.7 5.0 5.2 5.3 6.0 6.1 6.2 7.0 7.5 8.0 8.6+PTX"
 RUN python setup.py develop
 
 WORKDIR /
-RUN git clone --depth 1 https://github.com/robot-learning-freiburg/LCDNet.git
+RUN git clone --depth 1 https://github.com/boyuzhao-hub/LCDNet.git
 RUN mkdir /pretreined_models
 COPY LCDNet-kitti360.tar /pretreined_models/LCDNet-kitti360.tar
 
