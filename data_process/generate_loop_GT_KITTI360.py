@@ -100,7 +100,7 @@ if __name__ == '__main__':
     # for sequence in ["2013_05_28_drive_0000_sync", "2013_05_28_drive_0002_sync", "2013_05_28_drive_0003_sync",
     #                  "2013_05_28_drive_0004_sync", "2013_05_28_drive_0005_sync", "2013_05_28_drive_0006_sync",
     #                  "2013_05_28_drive_0007_sync", "2013_05_28_drive_0009_sync", "2013_05_28_drive_0010_sync"]:
-    for sequence in ["2013_05_28_drive_0002_sync"]:
+    for sequence in ["2013_05_28_drive_0000_sync"]:
         dataset = KITTI360(base_dir, sequence, 4, 10, [6, 10])
         lc_gt = []
         lc_gt_file = os.path.join(base_dir, 'data_poses', sequence, 'loop_GT_4m.pickle')
