@@ -328,8 +328,10 @@ def main_process(gpu, weights_path, args):
     print("Mean translation error: ", transl_errors.mean())
     print("Median translation error: ", np.median(transl_errors))
     print("STD translation error: ", transl_errors.std())
-    # save_dict = {'rot': yaw_error, 'transl': transl_errors}
-    # save_path = f'./results_for_paper/lcdnet00+08_{exp_cfg["test_sequence"]}'
+    
+    save_dict = {'rot': yaw_error, 'transl': transl_errors}
+    save_path = f'./results_for_paper/lcdnet00+08_{exp_cfg["test_sequence"]}'
+    
     if '360' in weights_path:
         save_path = f'./results_for_paper/lcdnet++_{exp_cfg["test_sequence"]}'
     else:
@@ -342,9 +344,11 @@ def main_process(gpu, weights_path, args):
         save_path = save_path+'_ransac'
     if args.teaser:
         save_path = save_path + '_teaser'
-    # print("Saving to ", save_path)
-    # with open(f'{save_path}.pickle', 'wb') as f:
-    #     pickle.dump(save_dict, f)
+        
+    print("Saving to ", save_path)
+    with open(f'{save_path}.pickle', 'wb') as f:
+        pickle.dump(save_dict, f)
+    
     valid = yaw_error <= 5.
     valid = valid & (np.array(transl_errors) <= 2.)
     succ_rate = valid.sum() / valid.shape[0]
